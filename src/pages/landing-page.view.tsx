@@ -6,7 +6,6 @@ export const LandingPageView = () => {
   return (
     <div>
       <Traducteur />
-      bonjour
       <Upgrade />
     </div>
   );
