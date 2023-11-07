@@ -1,6 +1,6 @@
 import React from "react";
 import { Textarea } from "@/components/ui/textarea";
-import { Buttons } from "@/pages/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
+import { Buttons } from "@/modules/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
 
 export const ComponentTextarea = () => {
   return (

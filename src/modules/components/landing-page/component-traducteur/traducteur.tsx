@@ -1,7 +1,7 @@
 import React from "react";
-import { SelectComponent } from "@/pages/components/landing-page/component-traducteur/components/component-select/component-select";
-import { ComponentTextarea } from "@/pages/components/landing-page/component-traducteur/components/component-textarea/component-textarea";
-import { Buttons } from "@/pages/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
+import { SelectComponent } from "@/modules/components/landing-page/component-traducteur/components/component-select/component-select";
+import { ComponentTextarea } from "@/modules/components/landing-page/component-traducteur/components/component-textarea/component-textarea";
+import { Buttons } from "@/modules/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
 
 export const Traducteur = () => {
   return (

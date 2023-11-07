@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonToggleTheme } from "@/pages/components/theme/button-toggle-theme/button-toggle-theme";
+import { ButtonToggleTheme } from "@/modules/components/theme/button-toggle-theme/button-toggle-theme";
 
 export const Header = () => {
   return (

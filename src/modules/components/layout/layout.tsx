@@ -1,6 +1,6 @@
 import React from "react";
-import { Header } from "@/pages/components/navigation/header/header";
-import { Footer } from "@/pages/components/navigation/footer/footer";
+import { Header } from "@/modules/components/navigation/header/header";
+import { Footer } from "@/modules/components/navigation/footer/footer";
 
 interface Props {
   children: React.ReactElement;
