@@ -125,7 +125,7 @@ export const Traducteur: React.FC = () => {
             />
             {verifieLangue1 && (
               <p className="text-red-600 text-sm">
-                Tu n'as pas choisi de langue, je ne peux pas traduire !!
+                Tu n&apos;as pas choisi de langue, je ne peux pas traduire !!
               </p>
             )}
           </div>
@@ -145,7 +145,7 @@ export const Traducteur: React.FC = () => {
             />
             {verifieLangue2 && (
               <p className="text-red-600 text-sm">
-                Tu n'as pas choisi de langue, je ne peux pas traduire !!
+                Tu n&apos;as pas choisi de langue, je ne peux pas traduire !!
               </p>
             )}
           </div>
