@@ -30,7 +30,9 @@ export const Traducteur: React.FC = () => {
   useEffect(() => {
     setLangue1(langue1);
     setVerifieLangue1(false);
-    if (langue1 !== "" || langue2 !== "") {
+    if (langue1 !== "" && langue2 !== "") {
+      console.log("hello");
+      console.log(contentTextarea);
       handleTranslate(contentTextarea);
     }
   }, [langue1]);
@@ -38,12 +40,15 @@ export const Traducteur: React.FC = () => {
   useEffect(() => {
     setLangue2(langue2);
     setVerifieLangue2(false);
-    if (langue1 !== "" || langue2 !== "") {
+    if (langue1 !== "" && langue2 !== "") {
+      console.log("salut");
       handleTranslate(contentTextarea);
     }
   }, [langue2]);
 
   const handleTextarea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = event.target.value;
+    setContentTextarea(newText);
     if (langue1 === "" || langue2 === "") {
       if (langue1 === "") {
         setVerifieLangue1(true);
@@ -52,9 +57,7 @@ export const Traducteur: React.FC = () => {
         setVerifieLangue2(true);
       }
     } else {
-      const newText = event.target.value;
       handleTranslate(newText);
-      setContentTextarea(newText);
     }
   };
 
