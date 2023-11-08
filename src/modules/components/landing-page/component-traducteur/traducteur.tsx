@@ -5,6 +5,7 @@ import { Buttons } from "@/modules/components/landing-page/component-traducteur/
 import MorseCodeDecoder from "@/lib/morse-to-text";
 import TextToMorse from "@/lib/text-to-morse";
 import { toast } from "@/components/ui/use-toast";
+import { log } from "util";
 
 export const Traducteur: React.FC = () => {
   const [langue1, setLangue1] = useState<string>("");
@@ -22,17 +23,12 @@ export const Traducteur: React.FC = () => {
   ) => {
     setLangue(value);
     setVerifieLangue(false);
-    if (value === "MORSE" || langue2 === "MORSE") {
-      handleTranslate(contentTextarea);
-    }
   };
 
   useEffect(() => {
     setLangue1(langue1);
     setVerifieLangue1(false);
     if (langue1 !== "" && langue2 !== "") {
-      console.log("hello");
-      console.log(contentTextarea);
       handleTranslate(contentTextarea);
     }
   }, [langue1]);
@@ -41,7 +37,6 @@ export const Traducteur: React.FC = () => {
     setLangue2(langue2);
     setVerifieLangue2(false);
     if (langue1 !== "" && langue2 !== "") {
-      console.log("salut");
       handleTranslate(contentTextarea);
     }
   }, [langue2]);
@@ -63,10 +58,12 @@ export const Traducteur: React.FC = () => {
 
   const handleTranslate = useMemo(
     () => (textToTranslate: string) => {
-      if (langue1 === "MORSE") {
-        setContentTextareaTranslate(MorseCodeDecoder(textToTranslate));
-      } else if (langue2 === "MORSE") {
-        setContentTextareaTranslate(TextToMorse(textToTranslate));
+      if (langue1 === "MORSE" || langue2 === "MORSE") {
+        if (langue1 === "MORSE") {
+          setContentTextareaTranslate(MorseCodeDecoder(textToTranslate));
+        } else if (langue2 === "MORSE") {
+          setContentTextareaTranslate(TextToMorse(textToTranslate));
+        }
       } else {
         fetch("/api/deepl", {
           method: "POST",
@@ -75,9 +72,9 @@ export const Traducteur: React.FC = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            text: textToTranslate, // The text you want to translate
+            text: textToTranslate,
             target_lang: langue2,
-            source_lang: langue1, // The target language code, e.g., 'DE' for German
+            source_lang: langue1,
           }),
         })
           .then((res) => {
