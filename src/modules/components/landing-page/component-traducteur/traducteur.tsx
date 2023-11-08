@@ -30,7 +30,7 @@ export const Traducteur: React.FC = () => {
   useEffect(() => {
     setLangue1(langue1);
     setVerifieLangue1(false);
-    if (langue1 !== "MORSE" || langue2 !== "MORSE") {
+    if (langue1 !== "" || langue2 !== "") {
       handleTranslate(contentTextarea);
     }
   }, [langue1]);
@@ -38,7 +38,7 @@ export const Traducteur: React.FC = () => {
   useEffect(() => {
     setLangue2(langue2);
     setVerifieLangue2(false);
-    if (langue1 !== "MORSE" || langue2 !== "MORSE") {
+    if (langue1 !== "" || langue2 !== "") {
       handleTranslate(contentTextarea);
     }
   }, [langue2]);
