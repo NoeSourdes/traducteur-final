@@ -40,7 +40,7 @@ export const Upgrade = ({
   return (
     <>
       <div className="flex justify-center items-center">
-        <Button onClick={handleUpgrade} className="">
+        <Button onClick={handleUpgrade} className="pb-10">
           Améliore ton texte <BrainCircuit className="ml-3" size={20} />
         </Button>
       </div>
@@ -59,7 +59,7 @@ export const Upgrade = ({
       {!display ? (
         ""
       ) : (
-        <div className="px-10 flex justify-center py-10">
+        <div className="px-10 flex justify-center pb-10">
           <div className="max-w-[1120px] space-x-10 flex justify-between w-full max-lg:flex-col max-lg:space-y-10 max-lg:space-x-0">
             <div className="lg:w-[45vw] space-y-3">
               <ComponentTextarea
