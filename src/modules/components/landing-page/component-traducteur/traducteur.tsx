@@ -1,18 +1,31 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { SelectComponent } from "@/modules/components/landing-page/component-traducteur/components/component-select/component-select";
 import { ComponentTextarea } from "@/modules/components/landing-page/component-traducteur/components/component-textarea/component-textarea";
 import { Buttons } from "@/modules/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
+import { toast } from "@/components/ui/use-toast";
 import MorseCodeDecoder from "@/lib/morse-to-text";
 import TextToMorse from "@/lib/text-to-morse";
-import { toast } from "@/components/ui/use-toast";
-import { log } from "util";
 
-export const Traducteur: React.FC = () => {
-  const [langue1, setLangue1] = useState<string>("");
-  const [langue2, setLangue2] = useState<string>("");
+interface Props {
+  handleContent: (value: string) => void;
+  langue1: string;
+  langue2: string;
+  setLangue1: React.Dispatch<React.SetStateAction<string>>;
+  setLangue2: React.Dispatch<React.SetStateAction<string>>;
+  contentTextareaTranslate: string;
+  setContentTextareaTranslate: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const Traducteur: React.FC<Props> = ({
+  handleContent,
+  langue1,
+  langue2,
+  setLangue1,
+  setLangue2,
+  contentTextareaTranslate,
+  setContentTextareaTranslate,
+}) => {
   const [contentTextarea, setContentTextarea] = useState<string>("");
-  const [contentTextareaTranslate, setContentTextareaTranslate] =
-    useState<string>("");
   const [verifieLangue1, setVerifieLangue1] = useState<boolean>(false);
   const [verifieLangue2, setVerifieLangue2] = useState<boolean>(false);
 
@@ -29,7 +42,7 @@ export const Traducteur: React.FC = () => {
     setLangue1(langue1);
     setVerifieLangue1(false);
     if (langue1 !== "" && langue2 !== "") {
-      handleTranslate(contentTextarea);
+      handleTranslate(contentTextarea, langue1, langue2);
     }
   }, [langue1]);
 
@@ -37,13 +50,14 @@ export const Traducteur: React.FC = () => {
     setLangue2(langue2);
     setVerifieLangue2(false);
     if (langue1 !== "" && langue2 !== "") {
-      handleTranslate(contentTextarea);
+      handleTranslate(contentTextarea, langue1, langue2);
     }
   }, [langue2]);
 
   const handleTextarea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = event.target.value;
     setContentTextarea(newText);
+    handleContent(newText);
     if (langue1 === "" || langue2 === "") {
       if (langue1 === "") {
         setVerifieLangue1(true);
@@ -52,12 +66,11 @@ export const Traducteur: React.FC = () => {
         setVerifieLangue2(true);
       }
     } else {
-      handleTranslate(newText);
+      handleTranslate(newText, langue1, langue2);
     }
   };
-
   const handleTranslate = useMemo(
-    () => (textToTranslate: string) => {
+    () => (textToTranslate: string, langue1: string, langue2: string) => {
       if (langue1 === "MORSE" || langue2 === "MORSE") {
         if (langue1 === "MORSE") {
           setContentTextareaTranslate(MorseCodeDecoder(textToTranslate));
