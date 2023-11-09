@@ -40,7 +40,7 @@ export const Upgrade = ({
   return (
     <>
       <div className="flex justify-center items-center">
-        <Button onClick={handleUpgrade} className="pb-10">
+        <Button onClick={handleUpgrade} className="mb-10">
           Améliore ton texte <BrainCircuit className="ml-3" size={20} />
         </Button>
       </div>
