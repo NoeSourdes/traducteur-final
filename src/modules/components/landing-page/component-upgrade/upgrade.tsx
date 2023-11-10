@@ -49,6 +49,7 @@ export const Upgrade = ({
           ""
         ) : (
           <ClipLoader
+            color="#BDBDBD"
             className="mb-10"
             size={50}
             aria-label="Loading Spinner"
