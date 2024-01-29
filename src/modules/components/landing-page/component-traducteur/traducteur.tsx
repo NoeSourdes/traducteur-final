@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { SelectComponent } from "@/modules/components/landing-page/component-traducteur/components/component-select/component-select";
-import { ComponentTextarea } from "@/modules/components/landing-page/component-traducteur/components/component-textarea/component-textarea";
-import { Buttons } from "@/modules/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
 import { toast } from "@/components/ui/use-toast";
 import MorseCodeDecoder from "@/lib/morse-to-text";
 import TextToMorse from "@/lib/text-to-morse";
+import { SelectComponent } from "@/modules/components/landing-page/component-traducteur/components/component-select/component-select";
+import { Buttons } from "@/modules/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
+import { ComponentTextarea } from "@/modules/components/landing-page/component-traducteur/components/component-textarea/component-textarea";
+import React, { useEffect, useMemo, useState } from "react";
 
 interface Props {
   handleContent: (value: string) => void;
@@ -32,7 +32,7 @@ export const Traducteur: React.FC<Props> = ({
   const handleLangueChange = (
     value: string,
     setLangue: React.Dispatch<React.SetStateAction<string>>,
-    setVerifieLangue: React.Dispatch<React.SetStateAction<boolean>>,
+    setVerifieLangue: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     setLangue(value);
     setVerifieLangue(false);
@@ -105,7 +105,7 @@ export const Traducteur: React.FC<Props> = ({
           });
       }
     },
-    [langue1, langue2],
+    [langue1, langue2]
   );
 
   const handleCopy = (textToCopy: string) => {
@@ -127,8 +127,8 @@ export const Traducteur: React.FC<Props> = ({
 
   return (
     <div className="px-10 flex justify-center py-10">
-      <div className="max-w-[1120px] space-x-10 flex justify-between w-full max-lg:flex-col max-lg:space-y-10 max-lg:space-x-0">
-        <div className="lg:w-[45vw] space-y-3">
+      <div className="max-w-[1120px] space-x-10 flex justify-between w-full max-md:flex-col max-md:space-y-10 max-md:space-x-0">
+        <div className="md:w-[45vw] space-y-3">
           <div className="space-y-3">
             <SelectComponent
               handleLangue={(value) =>
@@ -148,7 +148,7 @@ export const Traducteur: React.FC<Props> = ({
           />
         </div>
         <div className="border"></div>
-        <div className="lg:w-[40vw] space-y-3">
+        <div className="md:w-[40vw] space-y-3">
           <div className="space-y-3">
             <SelectComponent
               handleLangue={(value) =>
