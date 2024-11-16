@@ -2,15 +2,15 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function createMessage(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const { messages } = req.body;
   const apiKey = process.env.OPENAI_API_KEY;
-  const url = "https://api.openai.com/v1/chat/completions";
+  const url = "https://api.perplexity.ai";
 
   const body = JSON.stringify({
     messages,
-    model: "gpt-3.5-turbo",
+    model: "llama-3.1-70b-instruct",
     stream: false,
   });
 
