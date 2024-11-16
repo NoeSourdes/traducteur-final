@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { Buttons } from "@/modules/components/landing-page/component-traducteur/components/component-select/components/buttons/buttons";
 import { ComponentTextarea } from "@/modules/components/landing-page/component-traducteur/components/component-textarea/component-textarea";
-import { SparkleIcon } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 
 interface Props {
@@ -40,7 +40,7 @@ export const Upgrade = ({
     <>
       <div className="flex justify-center items-center">
         <Button onClick={handleUpgrade} className="mb-10">
-          Améliore ton texte <SparkleIcon className="ml-3" size={20} />
+          Améliore ton texte <Sparkles className="ml-3" size={20} />
         </Button>
       </div>
       <div className="flex justify-center items-center">
